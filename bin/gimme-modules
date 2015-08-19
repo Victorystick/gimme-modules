@@ -1,0 +1,44 @@
+#!/usr/bin/env node
+
+var gimme = require( '../' );
+var version = require( '../package.json' ).version;
+var fs = require( 'fs' );
+var minimist = require( 'minimist' );
+
+(function run ( command ) {
+	var output;
+
+	if ( command.help || ( process.argv.length <= 2 && process.stdin.isTTY ) ) {
+	  console.log( [
+	    'gimme-modules, version ' + version,
+	    '',
+	    'Usage: gimme-modules [options] file',
+	    '',
+	    '-h / --help           Print this help message',
+	    '-o / --output         The output file, or output directory if recursive',
+	    '-r / --recursive      Recursively convert modules',
+	    '-v / --version        Print the version number',
+	  ].join('\n') );
+
+	} else if ( command.version ) {
+		console.log( version );
+
+	} else {
+		if ( command.recursive ) {
+			gimme.recursive( command._[0], command.output );
+		} else {
+			output = command.output ? fs.createWriteStream( command.output ) : process.stdout;
+
+			gimme.file( command._[0], output );
+		}
+	}
+
+})( minimist( process.argv.slice( 2 ), {
+	alias: {
+		// Short options
+		h: 'help',
+		o: 'output',
+    r: 'recursive',
+		v: 'version'
+	}
+}));

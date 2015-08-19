@@ -1,0 +1,33 @@
+{
+  "name": "gimme-modules",
+  "version": "0.1.0",
+  "description": "Convert other module formats to ES2015",
+  "main": "src/index.js",
+  "bin": {
+    "gimme-modules": "./bin/gimme-modules"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/victorystick/gimme-modules"
+  },
+  "author": "Oskar Segersvärd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/victorystick/gimme-modules/issues"
+  },
+  "homepage": "https://github.com/rich-harris/rollup",
+  "dependencies": {
+    "babylon": "^5.7.2",
+    "escodegen": "^1.6.1",
+    "esprima": "^2.5.0",
+    "estraverse": "^4.1.0",
+    "minimist": "^1.1.3"
+  },
+  "devDependencies": {
+    "eslint": "^1.2.0",
+    "mocha": "^2.2.5"
+  }
+}
