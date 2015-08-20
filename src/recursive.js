@@ -1,13 +1,10 @@
 var path = require( 'path' );
-var fs = require( 'fs' );
 var file = require( './file' );
 
 module.exports = function ( input, directory ) {
 	var file = path.resolve( input );
 	var source = path.dirname( file );
 	var target = path.resolve( directory );
-
-	fs.mkdirSync( directory );
 
 	// source dir, eg. `src`
 	// target dir, eg. `target`
