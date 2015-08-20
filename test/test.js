@@ -26,7 +26,7 @@ describe( 'gimme-modules', function () {
 
 				var result = gimme.source( fs.readFileSync( absFile, { encoding: 'utf8' } ) );
 
-				assert.equal( result.format, dir );
+				assert.equal( result.format, dir, file );
 			});
 		});
 	});
