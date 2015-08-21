@@ -10,6 +10,10 @@ var generateOptions = {
 module.exports = function source ( source ) {
 	var ast = babylon.parse( source );
 
+	// The top-level node type Babylon generates is "File".
+	// These files have a "program" property, which is what ESTree expects.
+	ast = ast.program;
+
 	var result = modularize( ast );
 
 	ast = result.ast;
